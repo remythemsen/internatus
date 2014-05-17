@@ -1,0 +1,1 @@
+This is a very simple CMS made with the MVC architecture in mind, i will be developing on this during my current education, implementing and experimenting with features reflecting the technologies and procedures i am currently studying.
