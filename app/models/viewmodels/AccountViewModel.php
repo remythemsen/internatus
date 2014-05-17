@@ -306,7 +306,7 @@ class AccountViewModel extends ViewModel {
     public function change_site_name() {
 
         $page_title = $_POST['page_title'];
-        $config_file = __SITE_PATH.'/config/config.xml';
+        $config_file = __SITE_PATH.'app/config/config.xml';
         $config = simplexml_load_file($config_file);
         $config->general->pagetitle = $page_title;
         $content = $config->asXML();

@@ -3,7 +3,7 @@ class Install extends Controller {
     function Index() {
 
         // recheck for config file, to limit access after install.
-        if(file_exists(__SITE_PATH.'/config/config.xml')) {
+        if(file_exists(__SITE_PATH.'app/config/config.xml')) {
             $this->redirect_to('home');
         }
 
@@ -14,7 +14,7 @@ class Install extends Controller {
 
     function Database() {
         // recheck for config file, to limit access after install.
-        if(file_exists(__SITE_PATH.'/config/config.xml')) {
+        if(file_exists(__SITE_PATH.'app/config/config.xml')) {
             $this->redirect_to('install/administrator');
         }
 
@@ -67,7 +67,7 @@ class Install extends Controller {
 
             $content = implode($content, "\n"); 
 
-            $config_file = __SITE_PATH."/config/config.xml";
+            $config_file = __SITE_PATH."app/config/config.xml";
             
             // opening a file (new)
             $handle = fopen($config_file, 'w') or die('Cannot open file:  '.$config_file);
@@ -122,7 +122,7 @@ class Install extends Controller {
             $db = new Database();
             
             // include migrations
-            require(__SITE_PATH.'/includes/Migrations.php');
+            require(__SITE_PATH.'app/includes/Migrations.php');
 
             // instanciate the handler, pass db reference.
             $migrationsHandler = new Migrations($db);
@@ -198,7 +198,7 @@ class Install extends Controller {
             // storing full object in var as xml
             $content = $this->registry->config->asXML();
             // overwriting config file with new xml
-            $config_file = __SITE_PATH.'/config/config.xml';
+            $config_file = __SITE_PATH.'app/config/config.xml';
             $handle = fopen($config_file, 'w') or die('Cannot open file:  '.$config_file);
             $result = fwrite($handle, $content);
             fclose($handle);

@@ -1,4 +1,4 @@
-<?php require_once(__SITE_PATH.'/views/head.php'); ?>
+<?php require_once(__SITE_PATH.'app/views/head.php'); ?>
 <body class="install">
     <div class="row" id="setup-header" style=""></div>
     <div class="row" id="content">
@@ -34,4 +34,4 @@
             </div>
         </div>
     </div>
-<?php require_once(__SITE_PATH.'/views/footer.php'); ?>
+<?php require_once(__SITE_PATH.'app/views/footer.php'); ?>

@@ -36,7 +36,7 @@ class View {
         }
         
         // find current view's directory
-        $directory = 'app/views/'.$url[0].'/js';
+        $directory = __SITE_PATH.'public/js/views/'.$url[0];
 
         // check for a js dir in the view folder.
         if (file_exists($directory) && is_dir($directory)) {
@@ -49,7 +49,7 @@ class View {
                 $file_parts = pathinfo($file);
                 $file_extension = $file_parts['extension'];
                 if($file_extension == 'js') {
-                    array_push($this->js, BASE_URL.$directory.'/'.$file);
+                    array_push($this->js, BASE_URL.'js/views/'.$url[0].'/'.$file);
                 }
             }
         } 
