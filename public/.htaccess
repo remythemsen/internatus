@@ -1,0 +1,8 @@
+RewriteEngine on
+#disabling direct directory and file requests.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+BrowserMatch MSIE ie
+Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
+AddDefaultCharset UTF-8
