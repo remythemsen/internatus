@@ -1,8 +1,8 @@
 <?php 
-require_once(__SITE_PATH.'/views/head.php');
+require_once(__SITE_PATH.'app/views/head.php');
 ?>
 <body>
-    <?php require_once(__SITE_PATH.'views/nav.php'); ?>
+    <?php require_once(__SITE_PATH.'app/views/nav.php'); ?>
     <div class="row" id="header">
         <div id="breadcrumbs">
         </div>

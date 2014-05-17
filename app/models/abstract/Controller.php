@@ -16,7 +16,7 @@ Abstract Class Controller {
         $controllerName = get_class($this);
         
         // path to the view models
-        $path = __SITE_PATH.'/models/viewmodels/';
+        $path = __SITE_PATH.'app/models/viewmodels/';
 
         // complete path with filename.
         $file = $path.$controllerName.'ViewModel.php';

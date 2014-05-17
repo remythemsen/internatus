@@ -17,11 +17,11 @@ class View {
     }
     public function render($name, $template = true) {
         if($template == false) {
-            require __SITE_PATH.'views/' . $name . '.php';
+            require __SITE_PATH.'app/views/' . $name . '.php';
         } else {
-            require __SITE_PATH.'views/header.php';
-            require __SITE_PATH.'views/' . $name . '.php';
-            require __SITE_PATH.'views/footer.php';
+            require __SITE_PATH.'app/views/header.php';
+            require __SITE_PATH.'app/views/' . $name . '.php';
+            require __SITE_PATH.'app/views/footer.php';
         }
     }
 
@@ -36,7 +36,7 @@ class View {
         }
         
         // find current view's directory
-        $directory = 'views/'.$url[0].'/js';
+        $directory = 'app/views/'.$url[0].'/js';
 
         // check for a js dir in the view folder.
         if (file_exists($directory) && is_dir($directory)) {

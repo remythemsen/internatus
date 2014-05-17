@@ -29,7 +29,7 @@ define('BASE_URL', $url);
 
 // require libraries and abstract base classes.
 
-$library_dir = __SITE_PATH.'/libs/';
+$library_dir = __SITE_PATH.'app/libs/';
 
 $libraries = glob($library_dir.'*.php', GLOB_BRACE);
 
@@ -37,10 +37,10 @@ foreach($libraries as $library) {
     require $library;
 }
 
-require(__SITE_PATH.'/models/abstract/Controller.php');
-require(__SITE_PATH.'/models/abstract/Model.php');
-require(__SITE_PATH.'/models/abstract/ViewModel.php');
-require(__SITE_PATH.'/models/abstract/View.php');
+require(__SITE_PATH.'app/models/abstract/Controller.php');
+require(__SITE_PATH.'app/models/abstract/Model.php');
+require(__SITE_PATH.'app/models/abstract/ViewModel.php');
+require(__SITE_PATH.'app/models/abstract/View.php');
 
 // starting the session
 
@@ -51,7 +51,7 @@ Session::init();
 function __autoload($class_name) {
 
     $filename = $class_name . '.php';
-    $file = __SITE_PATH . '/models/concrete/' . $filename;
+    $file = __SITE_PATH . 'app/models/concrete/' . $filename;
 
     if (file_exists($file) == false) {
         return false;
@@ -66,15 +66,15 @@ function __autoload($class_name) {
 $registry = new Registry();
 
 // registering the config file
-if(file_exists(__SITE_PATH.'/config/config.xml')) {
-    $registry->config = simplexml_load_file(__SITE_PATH.'/config/config.xml');
+if(file_exists(__SITE_PATH.'app/config/config.xml')) {
+    $registry->config = simplexml_load_file(__SITE_PATH.'app/config/config.xml');
 }
 
 // instanciating the router.
 $registry->router = new Router($registry);
 
 // setting the right path to the controllers dir.
-$registry->router->setPath(__SITE_PATH . '/controllers');
+$registry->router->setPath(__SITE_PATH . 'app/controllers');
 
 // running the loader
 $registry->router->loader();

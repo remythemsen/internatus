@@ -10,6 +10,6 @@ $site_path = preg_replace('/public$/', '', realpath(dirname(__FILE__)));
 define ('__SITE_PATH', $site_path);
 
 // loading the initializer.
-require __SITE_PATH.'/includes/init.php';
+require __SITE_PATH.'app/includes/init.php';
 
 ?>

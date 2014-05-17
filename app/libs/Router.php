@@ -42,7 +42,7 @@ class Router {
         $route = (empty($_GET['url'])) ? '' : $_GET['url'];
 
         // checking for config file.
-        if(!file_exists(__SITE_PATH."/config/config.xml")) {
+        if(!file_exists(__SITE_PATH."app/config/config.xml")) {
 
             // checks for logged in user, and kills it
             if(isset($_SESSION['user_id'])) {
