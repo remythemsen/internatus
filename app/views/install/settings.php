@@ -8,7 +8,7 @@
                 <h2 style="font-weight:bold;margin-bottom:-20px">Room Booking CMS</h2>
                 <h3>Site Settings</h3>
                 <br />
-                <?php $this->printNotifications(); ?>
+                <?php Notifier::printAll(); ?>
                 <br />
             </div>
             <div class="row">
@@ -16,7 +16,10 @@
                 <ul>
                     <li class="field">
                         <input type="text" class="narrow input" placeholder="Page Title" name="page_title"/>
-                    </li>     
+                    </li>
+                    <li class="field">
+                        <input type="text" class="narrow input" placeholder="Salt" name="salt"/>
+                    </li>
                     <li class="field">
                         <input type="submit" class="btn primary" style="width:120px; color:white;" name="site_submit" value="Next"/>
                     </li>

@@ -8,7 +8,7 @@ class Auth {
 
         try {
             $stmt = $db->prepare('SELECT * FROM accounts WHERE username = :username AND password = :password');
-            $stmt->execute(array(':username' => $username, ':password' => $password));
+            $stmt->execute(array(':username' => $username, ':password' => Hash::make($password)));
         } catch (PDOException $e) {
             throw $e;
         }

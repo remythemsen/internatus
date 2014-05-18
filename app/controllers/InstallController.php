@@ -61,6 +61,7 @@ class InstallController extends Controller {
                     "\t</db>",
                     "\t<general>",
                         "\t\t<pagetitle></pagetitle>",
+                        "\t\t<salt></salt>",
                     "\t</general>",
                 "</application>"
             );
@@ -149,7 +150,7 @@ class InstallController extends Controller {
                 $statement = $db->prepare("INSERT INTO accounts (username, password, email, is_admin, is_active) VALUES (?, ?, ?, ?, ?)");
 
                 // execute statement
-                $result = $statement->execute(array($username, MD5($password), $email, 1, 1));
+                $result = $statement->execute(array($username, Hash::make($password), $email, 1, 1));
 
             } else {
                URL::redirect('install/administrator');
@@ -190,11 +191,13 @@ class InstallController extends Controller {
     function Settings_post() {
         // get global vars from form.
         $page_title = (isset($_POST['page_title']) ? $_POST['page_title'] : false);
-        
+        $salt = (isset($_POST['salt']) ? $_POST['salt'] : false);
+
         //checking for data from form
         if($page_title) {
-            // setting new value for page title in config object.
+            // setting new value for page title and salt in config object.
             $this->registry->config->general->pagetitle = $page_title;
+            $this->registry->config->general->salt = $salt;
             // storing full object in var as xml
             $content = $this->registry->config->asXML();
             // overwriting config file with new xml

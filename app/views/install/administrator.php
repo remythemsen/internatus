@@ -8,7 +8,7 @@
                 <h2 style="font-weight:bold;margin-bottom:-20px">Room Booking CMS</h2>
                 <h3>Setup Administrative Account</h3>
                 <br />
-                <?php $this->printNotifications(); ?>
+                <?php Notifier::printAll(); ?>
                 <br />
             </div>
             <div class="row">

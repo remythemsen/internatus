@@ -21,11 +21,8 @@ class AccountController extends Controller {
     // post login form 
     function login_do() {
 
-        // Run login function from model object.
-        //$result = $this->model->login();
-
-        $username = (isset($_POST['username']) ? $_POST['username'] : '');
-        $password = (isset($_POST['password']) ? $_POST['password'] : '');
+        $username = (isset($_POST['username']) ? trim($_POST['username']) : '');
+        $password = (isset($_POST['password']) ? trim($_POST['password']) : '');
 
         // Login with auth
 

@@ -51,6 +51,7 @@ require(__SITE_PATH.'app/helpers/Auth.php');
 require(__SITE_PATH.'app/helpers/Router.php');
 require(__SITE_PATH.'app/helpers/Config.php');
 require(__SITE_PATH.'app/helpers/Notifier.php');
+require(__SITE_PATH.'app/helpers/Hash.php');
 
 
 
@@ -62,6 +63,7 @@ $registry->router->setPath(__SITE_PATH . 'app/controllers');
 
 // running the loader
 $registry->router->loader();
+
 
 
 
