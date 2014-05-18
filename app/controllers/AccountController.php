@@ -6,7 +6,7 @@ class AccountController extends Controller {
         // check whether the account is logged in, and redirecting.
 
         if(isset($this->account)) {
-            $this->redirect_to('home');
+            URL::redirect('home');
         } else {
             URL::redirect('account/login');
         }   
@@ -16,7 +16,8 @@ class AccountController extends Controller {
         $this->view->pagetitle = $this->registry->config->general->pagetitle;
         $this->view->render('account/login');
     }
-    
+
+
     // post login form 
     function login_do() {
 
@@ -36,7 +37,17 @@ class AccountController extends Controller {
             URL::redirect('account/login');
         }
     }
- 
+
+    function create_do() {
+        if(!Auth::check()) {
+            $this->model->create();
+            URL::redirect('account/login');
+            $this->addNotification('success', 'Please log in with your new credentials');
+        } else {
+            URL::redirect('home');
+        }
+    }
+
     function logout() {
         Auth::logout();
     }
