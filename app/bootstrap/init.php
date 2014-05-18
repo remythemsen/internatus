@@ -2,31 +2,6 @@
 
 // This is the initializer
 
-// Get base the URL
-if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
-    $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-} else {
-    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-}
-
-if(isset($_GET['url'])) {
-    // exploding the get url
-    $routeParts = explode('/', $_GET['url']);
-    $urlParts = explode('/', $url);
-
-    foreach($routeParts as $routePart) {
-        array_pop($urlParts);
-    }
-
-    // gathering the parts for the base URL
-        
-    $url = implode('/', $urlParts);
-    // adding the ending slash
-    $url = $url.'/';
-}
-    
-define('BASE_URL', $url);
-
 // require libraries and abstract base classes.
 
 $library_dir = __SITE_PATH.'app/libs/';
@@ -36,6 +11,9 @@ $libraries = glob($library_dir.'*.php', GLOB_BRACE);
 foreach($libraries as $library) {
     require $library;
 }
+
+require(__SITE_PATH.'app/helpers/URL.php');
+define('BASE_URL', URL::base());
 
 require(__SITE_PATH.'app/models/abstract/Controller.php');
 require(__SITE_PATH.'app/models/abstract/Model.php');
@@ -60,7 +38,6 @@ function __autoload($class_name) {
     include ($file);
 }
 
-
 // instanciating the registry
 // this will be the keeper of global variables.
 $registry = new Registry();
@@ -69,7 +46,6 @@ $registry = new Registry();
 if(file_exists(__SITE_PATH.'app/config/config.xml')) {
     $registry->config = simplexml_load_file(__SITE_PATH.'app/config/config.xml');
 }
-
 
 require(__SITE_PATH.'app/helpers/Auth.php');
 require(__SITE_PATH.'app/helpers/Router.php');

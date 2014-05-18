@@ -50,16 +50,6 @@ Abstract Class Controller {
     // Force the index method for all controllers
     abstract function index();
 
-    // redirection method
-    protected function redirect_to($url) {
-        if($url == 'referer') {
-            // return to the referer, (the page just left).
-            header("Location: ".$_SERVER['HTTP_REFERER']);
-        } else {
-            header("Location: ".BASE_URL.$url);
-        }
-    }
-
     // adds a notification array to the global array 'notifications'.
     protected function addNotification($type, $message) {
         if(!isset($_SESSION['notifications'])) {

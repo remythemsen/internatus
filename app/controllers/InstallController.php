@@ -4,7 +4,7 @@ class InstallController extends Controller {
 
         // recheck for config file, to limit access after install.
         if(file_exists(__SITE_PATH.'app/config/config.xml')) {
-            $this->redirect_to('home');
+            URL::redirect('home');
         }
 
         
@@ -15,7 +15,7 @@ class InstallController extends Controller {
     function Database() {
         // recheck for config file, to limit access after install.
         if(file_exists(__SITE_PATH.'app/config/config.xml')) {
-            $this->redirect_to('install/administrator');
+            URL::redirect('install/administrator');
         }
 
         $this->view->render('install/db', false);
@@ -42,7 +42,7 @@ class InstallController extends Controller {
             }
             catch(PDOException $ex){
                 
-                    $this->redirect_to('install/database');
+                    URL::redirect('install/database');
                     $this->addNotification('danger', 'Could not connect to the Database');
                     die();
 
@@ -79,9 +79,9 @@ class InstallController extends Controller {
             // registering the new config file
             $this->registry->config = simplexml_load_file($config_file);
 
-            $this->redirect_to('install/administrator');
+            URL::redirect('install/administrator');
         } else {
-            $this->redirect_to('install/database');
+            URL::redirect('install/database');
             $this->addNotification('warning', 'All fields must be filled out.');
         }
  
@@ -96,7 +96,7 @@ class InstallController extends Controller {
         $sth->execute();
 
         if ( $sth->fetchColumn() > 0 ) {
-                $this->redirect_to('install/settings');
+                URL::redirect('install/settings');
                 $this->addNotification('warning', 'An administrative account was already created!');
                 $db = null;
                 die();
@@ -135,7 +135,7 @@ class InstallController extends Controller {
             $statement = $db->query("SELECT * FROM accounts");
 
             if ( $statement->rowCount() > 0 ) {
-                $this->redirect_to('install/settings');
+                URL::redirect('install/settings');
                 $this->addNotification('warning', 'An account was already created!');
                 die();
                 exit();
@@ -152,7 +152,7 @@ class InstallController extends Controller {
                 $result = $statement->execute(array($username, MD5($password), $email, 1, 1));
 
             } else {
-               $this->redirect_to('install/administrator'); 
+               URL::redirect('install/administrator');
                $this->addNotification('warning', 'Sorry, that username has already been taken :(');
                
             }
@@ -161,19 +161,19 @@ class InstallController extends Controller {
             $db = null;
 
             if($result) {
-                $this->redirect_to('install/settings');
+                URL::redirect('install/settings');
             } else {
                 throw new exception('Something went wrong with the insertion of data');
             }
         } else {
-            $this->redirect_to('install/administrator');
+            URL::redirect('install/administrator');
             $this->addNotification('warning', 'All fields must be filled out.');
         }
     }
     
     function Settings() {
         if(!isset($this->registry->config)) {
-            $this->redirect_to('install/database');
+            URL::redirect('install/database');
             $this->addNotification('danger', 'No configuration file was found!, please enter the following information');
         } else {
 
@@ -181,7 +181,7 @@ class InstallController extends Controller {
             if(!isset($page_title) or $page_title == '') {
                 $this->view->render('install/settings', false);
             } else {
-                $this->redirect_to('home');
+                URL::redirect('home');
                 $this->addNotification('warning', 'The Page title has already been set!, to change it, go to settings.');
             }
         }
@@ -205,12 +205,12 @@ class InstallController extends Controller {
 
             // redirect to complete page
             if($result != false) {
-                $this->redirect_to('install/complete');
+                URL::redirect('install/complete');
             } else {
                 throw new exception('Couldnt write to config file.');
             }
         } else {
-            $this->redirect_to('install/settings');
+            URL::redirect('install/settings');
             $this->addNotification('warning', 'All fields must be filled out.');
 
         }

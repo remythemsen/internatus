@@ -8,7 +8,7 @@ class AccountController extends Controller {
         if(isset($this->account)) {
             $this->redirect_to('home');
         } else {
-            $this->redirect_to('account/login');
+            URL::redirect('account/login');
         }   
     }
 
@@ -29,18 +29,18 @@ class AccountController extends Controller {
         // Login with auth
 
         if(Auth::attempt($username, $password)) {
-            $this->redirect_to('home');
+            URL::redirect('home');
         } else {
             // else, set notification and return to login 
             $this->addNotification('warning', "We couldn't log you in with what you just entered. Please try again.");
-            $this->redirect_to('referer');
+            URL::redirect('referer');
         }
     }
     function settings() {
          if(isset($this->account)) {
             $this->view->render('account/settings');
         } else {
-            $this->redirect_to('account/login');
+            URL::redirect('account/login');
         }
     }
 
@@ -59,12 +59,12 @@ class AccountController extends Controller {
         $result = $this->model->create();
         if(is_string($result)) {
             $this->addNotification('warning', $result);
-            $this->redirect_to('account/create');
+            URL::redirect('account/create');
         } else if($result) {
             $this->addNotification('success', 'Your Account was successfully created, login to proceed');
-            $this->redirect_to('account');     
+            URL::redirect('account');
         } else {
-            $this->redirect_to('account/create');
+            URL::redirect('account/create');
         }
     }
 
@@ -79,11 +79,11 @@ class AccountController extends Controller {
 
         if(!$result) {
             $this->addNotification('warning', 'That Username has already been taken');
-            $this->redirect_to('referer');
+            URL::redirect('referer');
 
         } else {
             
-            $this->redirect_to('account/settings');
+            URL::redirect('account/settings');
             $this->addNotification('success', 'Your '.$setting.' was changed successfully');
         }
     }
@@ -100,7 +100,7 @@ class AccountController extends Controller {
         $result = $this->model->change_site_name();
         if($result) {
             $this->addNotification('success', 'The name of the site was changed Successfully');
-            $this->redirect_to('account');
+            URL::redirect('account');
         } else {
             $this->addNotification('warning', 'Something went wrong!');
         }

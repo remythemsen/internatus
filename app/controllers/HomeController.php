@@ -7,7 +7,7 @@ class HomeController extends Controller {
             $this->view->render('home/index');
         }
         else {
-            $this->redirect_to('account/login');
+            URL::redirect('account/login');
         }
     }
 }
