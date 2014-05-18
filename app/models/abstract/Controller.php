@@ -59,10 +59,7 @@ Abstract Class Controller {
         $notification = array('type' => $type, 'message' => $message);
         array_push($_SESSION['notifications'], $notification);
     }
-    // giving access to baseurl from js
-    public function xhr_get_base_url() {
-        echo BASE_URL;
-    }
+    
 
 
     
