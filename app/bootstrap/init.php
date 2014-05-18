@@ -70,7 +70,11 @@ if(file_exists(__SITE_PATH.'app/config/config.xml')) {
     $registry->config = simplexml_load_file(__SITE_PATH.'app/config/config.xml');
 }
 
-// instanciating the router.
+
+
+require(__SITE_PATH.'app/helpers/Router.php');
+
+// instantiating the router.
 $registry->router = new Router($registry);
 
 // setting the right path to the controllers dir.
