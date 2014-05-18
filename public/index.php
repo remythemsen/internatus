@@ -17,6 +17,6 @@ $migration->run();
 */
 
 // loading the initializer.
-require __SITE_PATH.'app/includes/init.php';
+require __SITE_PATH.'app/bootstrap/init.php';
 
 

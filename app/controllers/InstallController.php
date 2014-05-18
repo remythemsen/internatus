@@ -122,13 +122,13 @@ class InstallController extends Controller {
             $db = new Database();
             
             // include migrations
-            require(__SITE_PATH.'app/includes/Migrations.php');
+            require(__SITE_PATH.'app/helpers/Migrator.php');
 
             // instanciate the handler, pass db reference.
-            $migrationsHandler = new Migrations($db);
+            $migrator = new Migrater($db);
             
             // run migrations query.
-            $migrationsHandler->run();
+            $migrator->run();
 
             // check if an account already exists
 

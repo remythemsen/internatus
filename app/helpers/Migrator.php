@@ -1,5 +1,5 @@
 <?php 
-class Migrations {
+class Migrator {
     private $db;
     function __construct($db) {
         $this->db = $db;
