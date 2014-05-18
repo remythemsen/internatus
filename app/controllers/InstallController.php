@@ -125,7 +125,7 @@ class InstallController extends Controller {
             require(__SITE_PATH.'app/helpers/Migrator.php');
 
             // instanciate the handler, pass db reference.
-            $migrator = new Migrater($db);
+            $migrator = new Migrator($db);
             
             // run migrations query.
             $migrator->run();
