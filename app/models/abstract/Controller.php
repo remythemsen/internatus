@@ -13,14 +13,14 @@ Abstract Class Controller {
         $this->registry = $registry;
 
         // get the current active controller name
-        $controllerName = get_class($this);
-        
+        $controllerName = preg_replace('/Controller$/', '', get_class($this));
+
         // path to the view models
         $path = __SITE_PATH.'app/models/viewmodels/';
 
         // complete path with filename.
         $file = $path.$controllerName.'ViewModel.php';
-        
+
         // including the needed viewmodel file.
         if(file_exists($file)) {
             include $file;
