@@ -4,11 +4,11 @@
             <a href="<?php echo BASE_URL; ?>"><?php echo $this->registry->config->general->pagetitle; ?></a>
         </div>
         <nav class="eight columns navbar">
-            <?php if(isset($this->user)) : ?>
+            <?php if(isset($this->account)) : ?>
             <ul id="main-menu">
                 <li><a href="<?php echo BASE_URL; ?>">Dashboard</a></li>
                 <li id="user-menu-item">
-                    <a href="<?php echo BASE_URL; ?>account/settings"><?php echo ucfirst($this->user->get_username()); ?><i class="icon-down-open"></i></a> 
+                    <a href="<?php echo BASE_URL; ?>account/settings"><?php echo ucfirst($this->account->get_username()); ?><i class="icon-down-open"></i></a>
                     <div class="dropdown">
                         <ul>
                             <li><a href="<?php echo BASE_URL; ?>account/settings"><i class="icon-cog"></i>Settings</a></li>

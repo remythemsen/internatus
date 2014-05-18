@@ -5,7 +5,7 @@ Abstract Class Controller {
 
     protected $registry;
     protected $model;
-    protected $user;
+    protected $account;
 
     function __construct($registry) {
 
@@ -34,15 +34,15 @@ Abstract Class Controller {
         // creating a new view object
         $this->view = new View($this->registry);
         
-        // getting the user id from session variable, if any.
-        $user_id = Session::get('user_id');
+        // getting the account id from session variable, if any.
+        $account_id = Session::get('account_id');
         
-        // instanciating a new user
-        if(isset($user_id)) {
+        // instantiating a new account
+        if(isset($account_id)) {
             // TODO: REDO THIS SHITE! :D
-            $this->user = new User($this->registry);
-            $this->user->get_user_object($user_id);
-            $this->view->user = $this->user;
+            $this->account = new Account($this->registry);
+            $this->account->get_account_object($account_id);
+            $this->view->account = $this->account;
         }
 
     }
@@ -53,7 +53,7 @@ Abstract Class Controller {
     // redirection method
     protected function redirect_to($url) {
         if($url == 'referer') {
-            // return to the refere, (the page just left).
+            // return to the referer, (the page just left).
             header("Location: ".$_SERVER['HTTP_REFERER']);
         } else {
             header("Location: ".BASE_URL.$url);

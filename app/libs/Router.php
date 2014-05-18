@@ -44,8 +44,8 @@ class Router {
         // checking for config file.
         if(!file_exists(__SITE_PATH."app/config/config.xml")) {
 
-            // checks for logged in user, and kills it
-            if(isset($_SESSION['user_id'])) {
+            // checks for logged in account, and kills it
+            if(isset($_SESSION['account_id'])) {
                 Session::destroy();
             }
 
@@ -91,7 +91,7 @@ class Router {
         }
 
         // finally, setting the filepath to the controller.
-        $this->file = $this->path .'/'. ucfirst($this->controller) . '.php';
+        $this->file = $this->path .'/'. ucfirst($this->controller) . 'Controller.php';
     }
 
     public function loader() {
@@ -111,7 +111,7 @@ class Router {
         include $this->file;
 
         // make a new instance of the controller.
-        $class = $this->controller;
+        $class = $this->controller.'Controller';
 
         // new controller, passing in the registry.
         $controller = new $class($this->registry);

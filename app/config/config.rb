@@ -11,9 +11,9 @@ Compass::Frameworks.register('modular-scale', :path => File.expand_path("#{exten
 # require 'sassy-math'
 
 # Set this to the root of your project when deployed:
-http_path = "../../"
+http_path = "../../public/"
 css_dir = "../../public/css"
-sass_dir = "../../public/sass"
+sass_dir = "../sass"
 images_dir = "../../public/img"
 
 # You can select your preferred output style here (can be overridden via the command line) :nested or :expanded or :compact or :compressed:

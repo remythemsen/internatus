@@ -7,7 +7,7 @@
 
     <ul class="tab-nav two columns">
         <li id="account-tab-button"><a href="#">Account</a></li>
-        <?php if($this->user->is_admin()) : ?>
+        <?php if($this->account->is_admin()) : ?>
             <li id="site-tab-button"><a href="account/settings/site">Site</a></li>
             <li id="users-tab-button"><a href="#">Users</a></li>
         <?php endif; ?>
@@ -19,11 +19,11 @@
         <ul>
             <li>
                 <h6>Account Name:</h6>
-                <p><?php echo $this->user->get_username(); ?> - <a class="settings-change badge light" href="<?php echo BASE_URL; ?>account/update/username">change</a></p>
+                <p><?php echo $this->account->get_username(); ?> - <a class="settings-change badge light" href="<?php echo BASE_URL; ?>account/update/username">change</a></p>
             </li>
             <li>
                 <h6>Email:</h6>
-                <p><?php echo $this->user->get_email(); ?> - <a class="settings-change badge light" href="<?php echo BASE_URL; ?>account/update/email">change</a></p>
+                <p><?php echo $this->account->get_email(); ?> - <a class="settings-change badge light" href="<?php echo BASE_URL; ?>account/update/email">change</a></p>
             </li>
             <li>
                 <h6>Password:</h6>
@@ -32,7 +32,7 @@
         </ul>
     </div>
     
-    <?php if($this->user->is_admin()) : ?>
+    <?php if($this->account->is_admin()) : ?>
     <div id="site-tab" class="tab-content ten columns settings-section">
        
        <form name="site_setup_form" class="four columns" id="page_title_form" method="post" enctype="multipart/form-data" action="<?php echo BASE_URL.'account/change_site_name'; ?>">          <p>Site Settings</p>

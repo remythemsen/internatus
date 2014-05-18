@@ -18,5 +18,3 @@ class Database extends PDO {
        
     }
 }
-
-?>
