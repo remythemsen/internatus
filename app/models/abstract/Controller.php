@@ -59,7 +59,7 @@ Abstract Class Controller {
         $notification = array('type' => $type, 'message' => $message);
         array_push($_SESSION['notifications'], $notification);
     }
-    
+
 
 
     
