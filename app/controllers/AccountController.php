@@ -21,10 +21,14 @@ class AccountController extends Controller {
     function login_do() {
 
         // Run login function from model object.
-        $result = $this->model->login();
-        
-        // if successful, change header to dashboard.
-        if($result) {
+        //$result = $this->model->login();
+
+        $username = (isset($_POST['username']) ? $_POST['username'] : '');
+        $password = (isset($_POST['password']) ? $_POST['password'] : '');
+
+        // Login with auth
+
+        if(Auth::attempt($username, $password)) {
             $this->redirect_to('home');
         } else {
             // else, set notification and return to login 
@@ -40,16 +44,6 @@ class AccountController extends Controller {
         }
     }
 
-
-
-
-    function create_room_do() {
-        $result = $this->model->create_room();
-        if($result) {
-            $this->addNotification('success', 'The Room was Successfully Created');
-            $this->redirect_to('account/settings');
-        }
-    }
     function xhr_get_users() {
         $this->model->get_users();
     }
@@ -99,10 +93,7 @@ class AccountController extends Controller {
 
  
     function logout() {
-        Session::set('account_id', null);
-        Session::destroy();
-        $this->account = null;
-        header('location: '.BASE_URL);
+        Auth::logout();
     }
     function change_site_name() {
         

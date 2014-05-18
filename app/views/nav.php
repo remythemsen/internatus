@@ -8,7 +8,7 @@
             <ul id="main-menu">
                 <li><a href="<?php echo BASE_URL; ?>">Dashboard</a></li>
                 <li id="user-menu-item">
-                    <a href="<?php echo BASE_URL; ?>account/settings"><?php echo ucfirst($this->account->get_username()); ?><i class="icon-down-open"></i></a>
+                    <a href="<?php echo BASE_URL; ?>account/settings"><?php echo ucfirst(Auth::account('username')); ?><i class="icon-down-open"></i></a>
                     <div class="dropdown">
                         <ul>
                             <li><a href="<?php echo BASE_URL; ?>account/settings"><i class="icon-cog"></i>Settings</a></li>

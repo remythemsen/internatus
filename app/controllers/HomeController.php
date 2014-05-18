@@ -2,12 +2,12 @@
 
 class HomeController extends Controller {
     function index() {
-        if(!isset($this->account)) {
-            $this->redirect_to('account/login');
-        }
-        else {
+        if(Auth::check()) {
             // render the view
             $this->view->render('home/index');
+        }
+        else {
+            $this->redirect_to('account/login');
         }
     }
 }
