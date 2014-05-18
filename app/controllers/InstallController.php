@@ -43,7 +43,7 @@ class InstallController extends Controller {
             catch(PDOException $ex){
                 
                     URL::redirect('install/database');
-                    $this->addNotification('danger', 'Could not connect to the Database');
+                    Notifier::add('danger', 'Could not connect to the Database');
                     die();
 
             }
@@ -82,7 +82,7 @@ class InstallController extends Controller {
             URL::redirect('install/administrator');
         } else {
             URL::redirect('install/database');
-            $this->addNotification('warning', 'All fields must be filled out.');
+            Notifier::add('warning', 'All fields must be filled out.');
         }
  
     }
@@ -97,7 +97,7 @@ class InstallController extends Controller {
 
         if ( $sth->fetchColumn() > 0 ) {
                 URL::redirect('install/settings');
-                $this->addNotification('warning', 'An administrative account was already created!');
+                Notifier::add('warning', 'An administrative account was already created!');
                 $db = null;
                 die();
                 exit();
@@ -136,7 +136,7 @@ class InstallController extends Controller {
 
             if ( $statement->rowCount() > 0 ) {
                 URL::redirect('install/settings');
-                $this->addNotification('warning', 'An account was already created!');
+                Notifier::add('warning', 'An account was already created!');
                 die();
                 exit();
             }
@@ -153,7 +153,7 @@ class InstallController extends Controller {
 
             } else {
                URL::redirect('install/administrator');
-               $this->addNotification('warning', 'Sorry, that username has already been taken :(');
+               Notifier::add('warning', 'Sorry, that username has already been taken :(');
                
             }
               
@@ -167,14 +167,14 @@ class InstallController extends Controller {
             }
         } else {
             URL::redirect('install/administrator');
-            $this->addNotification('warning', 'All fields must be filled out.');
+            Notifier::add('warning', 'All fields must be filled out.');
         }
     }
     
     function Settings() {
         if(!isset($this->registry->config)) {
             URL::redirect('install/database');
-            $this->addNotification('danger', 'No configuration file was found!, please enter the following information');
+            Notifier::add('danger', 'No configuration file was found!, please enter the following information');
         } else {
 
             $page_title = $this->registry->config->general->pagetitle;
@@ -182,7 +182,7 @@ class InstallController extends Controller {
                 $this->view->render('install/settings', false);
             } else {
                 URL::redirect('home');
-                $this->addNotification('warning', 'The Page title has already been set!, to change it, go to settings.');
+                Notifier::add('warning', 'The Page title has already been set!, to change it, go to settings.');
             }
         }
     }
@@ -211,7 +211,7 @@ class InstallController extends Controller {
             }
         } else {
             URL::redirect('install/settings');
-            $this->addNotification('warning', 'All fields must be filled out.');
+            Notifier::add('warning', 'All fields must be filled out.');
 
         }
     }

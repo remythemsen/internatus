@@ -50,15 +50,7 @@ Abstract Class Controller {
     // Force the index method for all controllers
     abstract function index();
 
-    // adds a notification array to the global array 'notifications'.
-    protected function addNotification($type, $message) {
-        if(!isset($_SESSION['notifications'])) {
-            $_SESSION['notifications'] = array();
-        }
-        // use 'danger', 'warning', 'success', 'info', 'primary', 'secondary', 'default'.
-        $notification = array('type' => $type, 'message' => $message);
-        array_push($_SESSION['notifications'], $notification);
-    }
+
 
 
 

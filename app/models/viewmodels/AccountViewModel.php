@@ -4,8 +4,6 @@ class AccountViewModel extends ViewModel {
 
     public function create() {
 
-        $result = false;
-        
         $username = (isset($_POST['username']) ? trim($_POST['username']) : false);
         $email = (isset($_POST['email']) ? trim($_POST['email']) : false);
         $password = (isset($_POST['password']) ? MD5(trim($_POST['password'])) : false);
@@ -24,21 +22,19 @@ class AccountViewModel extends ViewModel {
                 // execute statement
                 $statement->execute(array($username, $password, $email, 0, 1));
 
-                $result = true;
+                Notifier::add('success', 'Congratulations, your account has been created, now login with your new credentials.');
+                return true;
+                exit();
                 
             } else {
-                $result = 'Account name is already taken';
+                Notifier::add('warning', 'Account name has already been taken');
+                return false; 'Account name is already taken';
+                exit();
             }
         } else {
-            $result = 'Some fields are not filled out!';
+            Notifier::add('warning', 'All fields are required');
+            return false;
+            exit();
         }
-        // returning the result to controller
-        return $result;
     }
-
-
-
-
-
-    
 }

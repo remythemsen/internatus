@@ -33,16 +33,19 @@ class AccountController extends Controller {
             URL::redirect('home');
         } else {
             // else, set notification and return to login 
-            $this->addNotification('warning', "We couldn't log you in with what you just entered. Please try again.");
+            Notifier::add('warning', "We couldn't log you in with what you just entered. Please try again.");
             URL::redirect('account/login');
         }
     }
 
     function create_do() {
         if(!Auth::check()) {
-            $this->model->create();
-            URL::redirect('account/login');
-            $this->addNotification('success', 'Please log in with your new credentials');
+            if($this->model->create()) {
+                URL::redirect('account/login');
+            } else {
+                URL::redirect('account/login');
+            }
+
         } else {
             URL::redirect('home');
         }

@@ -9,4 +9,4 @@ require_once(__SITE_PATH.'app/views/head.php');
     </div>
     
     <div class="row" id="content">
-        <?php $this->printNotifications(); ?>
+        <?php Notifier::printAll(); ?>

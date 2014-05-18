@@ -50,6 +50,7 @@ if(file_exists(__SITE_PATH.'app/config/config.xml')) {
 require(__SITE_PATH.'app/helpers/Auth.php');
 require(__SITE_PATH.'app/helpers/Router.php');
 require(__SITE_PATH.'app/helpers/Config.php');
+require(__SITE_PATH.'app/helpers/Notifier.php');
 
 
 
