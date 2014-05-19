@@ -18,6 +18,7 @@ class AccountViewModel extends ViewModel {
             $stmt = $this->db->prepare("INSERT INTO accounts (username, password, email, is_admin, is_active) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute(array($username, Hash::make($password), $email, 0, 1));
             Notifier::add('success', 'Congratulations, your account has been created, now login with your new credentials.');
+
             return true;
         }
     }
