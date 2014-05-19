@@ -2,7 +2,7 @@
 
 # Tell compass where to find local extensions
 # If you followed directions and ran 'gem install modular-scale' comment the next two lines out:
-extensions_dir = "../sass/extensions"
+extensions_dir = "../assets/sass/extensions"
 
 Compass::Frameworks.register('modular-scale', :path => File.expand_path("#{extensions_dir}/modular-scale"))
 
@@ -13,7 +13,7 @@ Compass::Frameworks.register('modular-scale', :path => File.expand_path("#{exten
 # Set this to the root of your project when deployed:
 http_path = "../../public/"
 css_dir = "../../public/css"
-sass_dir = "../sass"
+sass_dir = "../assets/sass"
 images_dir = "../../public/img"
 
 # You can select your preferred output style here (can be overridden via the command line) :nested or :expanded or :compact or :compressed:
