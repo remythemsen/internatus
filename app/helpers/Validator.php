@@ -11,12 +11,28 @@ class Validator {
         }
 
         if($type == 'password') {
+
+            $errors = array();
+
             // check for length
-            if(strlen($string) >= 8) {
-                // TODO: check for complexity
+            if(strlen($string) < 8) {
+                array_push($errors, 'Password is to short');
+            }
 
+            // check if has number
+            if(!preg_match("#[0-9]+#", $string)) {
+                array_push($errors, 'Password must include at least one number');
+            }
 
+            // check if has letter
+            if(!preg_match("#[a-zA-Z]+#", $string)) {
+                array_push($errors, 'Password must include at least one letter');
+            }
+
+            if(count($errors) == 0) {
                 return true;
+            } else {
+                Notifier::add('warning', implode(', ', $errors));
             }
         }
     }

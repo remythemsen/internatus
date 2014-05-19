@@ -52,8 +52,7 @@ require(__SITE_PATH.'app/helpers/Router.php');
 require(__SITE_PATH.'app/helpers/Config.php');
 require(__SITE_PATH.'app/helpers/Notifier.php');
 require(__SITE_PATH.'app/helpers/Hash.php');
-
-
+require(__SITE_PATH.'app/helpers/Validator.php');
 
 // instantiating the router.
 $registry->router = new Router($registry);
