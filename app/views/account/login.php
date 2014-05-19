@@ -1,9 +1,9 @@
 <div class="row" style=" padding:20px 0;margin-top:20px;">
-    <h3 style="padding-left:20px;">Welcome to <?php echo $this->pagetitle; ?>!<h3>
+    <h3 style="padding-left:20px;">Welcome to <?php echo Config::get()->general->pagetitle; ?>!<h3>
 </div>
 <div class="row">
     <div class="six columns" style="padding-right:20px;padding-left:20px;">
-    <h5>Login to start using <?php echo $this->pagetitle; ?></h5></span>
+    <h5>Login to start using <?php echo Config::get()->general->pagetitle; ?></h5></span>
     <br />
     <h3>Login</h3>
         <form action="<?php echo BASE_URL; ?>account/login_do" method="post">

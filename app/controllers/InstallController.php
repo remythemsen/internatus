@@ -178,7 +178,7 @@ class InstallController extends Controller {
             Notifier::add('danger', 'No configuration file was found!, please enter the following information');
         } else {
 
-            $page_title = $this->registry->config->general->pagetitle;
+            $page_title = Config::get()->general->pagetitle;
             if(!isset($page_title) or $page_title == '') {
                 $this->view->render('install/settings', false);
             } else {
