@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title><?php echo $this->registry->config->general->pagetitle; ?></title>
+    <title><?php echo Config::get()->general->pagetitle; ?></title>
 
     <!-- META Information -->
     <meta name="description" content="" />

@@ -13,7 +13,6 @@ class AccountController extends Controller {
     }
 
     function login() {
-        $this->view->pagetitle = $this->registry->config->general->pagetitle;
         $this->view->render('account/login');
     }
 
