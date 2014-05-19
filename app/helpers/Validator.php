@@ -5,6 +5,11 @@ class Validator {
 
         $errors = array();
 
+        // check for empty string
+        if(empty($string)) {
+            array_push($errors, 'the '.$type.' field is required');
+        }
+
         if($type == 'email') {
             // check for type: email
             if(!filter_var($string, FILTER_VALIDATE_EMAIL)) {
