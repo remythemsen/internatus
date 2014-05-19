@@ -5,7 +5,7 @@ class AccountController extends Controller {
 
         // check whether the account is logged in, and redirecting.
 
-        if(isset($this->account)) {
+        if(Auth::check()) {
             URL::redirect('home');
         } else {
             URL::redirect('account/login');
