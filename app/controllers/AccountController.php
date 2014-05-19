@@ -36,12 +36,8 @@ class AccountController extends Controller {
 
     function create_do() {
         if(!Auth::check()) {
-            if($this->model->create()) {
-                URL::redirect('account/login');
-            } else {
-                URL::redirect('account/login');
-            }
-
+            $this->model->create();
+            URL::redirect('account/login');
         } else {
             URL::redirect('home');
         }

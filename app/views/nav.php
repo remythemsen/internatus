@@ -6,7 +6,7 @@
         <nav class="eight columns navbar">
             <?php if(isset($this->account)) : ?>
             <ul id="main-menu">
-                
+
 
             <ul>
             <?php endif; ?>

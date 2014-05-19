@@ -4,7 +4,6 @@ class AccountViewModel extends ViewModel {
 
     public function create() {
 
-        // TODO: Create strict rules for user input of password
         // TODO: Remove the usernames, and replace with Email.
 
         $username = (isset($_POST['username']) ? trim($_POST['username']) : false);
@@ -39,5 +38,24 @@ class AccountViewModel extends ViewModel {
             return false;
             exit();
         }
+    }
+    public function create2() {
+        // get + trim vars
+        $username = (isset($_POST['username']) ? trim($_POST['username']) : false);
+        $email = (isset($_POST['email']) ? trim($_POST['email']) : false);
+        $password = (isset($_POST['password']) ? trim($_POST['password']) : false);
+
+
+        // check for no empty fields
+
+        // check email input
+
+
+        // check password input
+        // check username && email available
+        // modify password with salt(s)
+        // insert into accounts
+
+        // handle return + output errors
     }
 }
