@@ -112,48 +112,6 @@ nav#navbar-main-nav {
     padding-bottom:35px;
     margin-bottom:35px;
     top:35px;
-    .settings-section {
-        background:white;
-        padding:20px;
-        border-top-right-radius:3px;
-        border-bottom-right-radius:3px;
-        border-bottom-left-radius:3px;
-        box-shadow: 1px 1px 1px #DDD;
-    }
-    .widget {
-        background:white;
-        padding:10px;
-        border-radius:3px;
-        box-shadow: 1px 1px 1px #DDD;
-        margin-bottom:20px;
-        margin-top:20px;
-        a {
-            font-size:0.8em;
-        }
-        table {
-            margin-bottom:0;
-            box-shadow:none;
-            thead {
-                background:#3B638A;
-            }
-            th, td {
-                font-size:0.8em;
-            }
-            td span {
-                margin-top:3px;
-            }
-        }
-    }
-    .bookings-table, .rooms-table {
-        padding:0;
-        h6 {
-            margin:10px 10px;
-        }
-    }
-   .action {
-       float:right;
-    }
-
 }
 
 #footer {
@@ -172,40 +130,4 @@ nav#navbar-main-nav {
         text-align:center;
     }
 }
-li.room, li.booking {
-    padding-left:5px;
-    &:nth-child(odd) {
-        background:#efefef;
-    }
-}
-.settings-change {
-    font-size: 0.8em;
-}
-.time_picker {
-    width:134px;
-    max-width:134px;
-}
-#room_picker {
-    width:208px;
-    max-width:208px;
-}
-.comment-username {
-    color: rgb(42, 113, 179);
-}
-.comment-post_time {
-    color: #666;
-    font-size:0.7em;
-}
-.comment-comment {
-    font-size:14px;
-}
 
-li.comment {
-    border-bottom:1px solid #eee;
-    padding-left:10px;
-    padding-bottom:5px;
-    margin-top:5px;
-    &:last-child {
-        border:none;
-    }
-}
