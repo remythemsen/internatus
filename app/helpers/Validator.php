@@ -69,7 +69,7 @@ class Validator {
 
             // is available
             if($stmt->rowCount() != 0) {
-                Notifier::add('warning', 'Username has already been taken');
+                array_push($errors, 'Username has already been taken');
             }
         }
 
