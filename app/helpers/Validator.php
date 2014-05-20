@@ -38,8 +38,8 @@ class Validator {
             }
 
             // check for length
-            if(strlen($array['password']) < 8) {
-                array_push($errors, 'Password needs to be at least 8 characters long');
+            if(strlen($array['password']) < 8 || strlen($array['password']) > 16 ) {
+                array_push($errors, 'Password needs to be between 8 and 16 characters long');
             }
 
             // check if has number
