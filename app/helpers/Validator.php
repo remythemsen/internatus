@@ -60,8 +60,8 @@ class Validator {
                 array_push($errors, 'the Username field is required');
             }
             // check for length
-            if(strlen($array['username']) < 3) {
-                array_push($errors, 'Username has to be at least 3 characters long.');
+            if(strlen($array['username']) < 3 || strlen($array['username'] > 10)) {
+                array_push($errors, 'Username has to be between 3 and 10 characters long.');
             }
 
             $stmt = $db->prepare("SELECT username FROM accounts WHERE username = :username LIMIT 1");
