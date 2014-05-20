@@ -5,7 +5,7 @@
         
         <div class="centered eight columns white-box">
             <div class="row">
-                <h2 style="font-weight:bold;margin-bottom:-20px">Room Booking CMS</h2>
+                <h2 style="font-weight:bold;margin-bottom:-20px">Internatus CMS</h2>
                 <br />
                 <h3 style="color:green;">Congratulations!</h3>
             </div>
