@@ -1,15 +1,14 @@
 <?php 
 /* This is the entry point of the web application */
 
-// Error Reporting: 
-error_reporting(E_ALL); // on
+// Set site path
+define('__SITE_PATH', preg_replace('/public$/', '', realpath(dirname(__FILE__))));
 
-// define the site path constant 
-$site_path = preg_replace('/public$/', '', realpath(dirname(__FILE__)));
+// Run init
+require(__SITE_PATH.'app/bootstrap/init.php');
 
-define ('__SITE_PATH', $site_path);
+// Get app object
+$app = new App();
 
-// loading the initializer.
-require __SITE_PATH.'app/bootstrap/init.php';
-
-
+// Start application
+$app->run();

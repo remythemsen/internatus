@@ -2,7 +2,15 @@
 
 // This is the initializer
 
-// require libraries and abstract base classes.
+/*
+ | Core
+ */
+
+require(__SITE_PATH.'app/core/App.php');
+
+/*
+ | Libraries
+ */
 
 $library_dir = __SITE_PATH.'app/libs/';
 
@@ -12,8 +20,24 @@ foreach($libraries as $library) {
     require $library;
 }
 
-require(__SITE_PATH.'app/helpers/URL.php');
+/*
+ | Helpers
+ */
+
+$helpers_dir = __SITE_PATH.'app/helpers/';
+
+$helpers = glob($helpers_dir.'*.php', GLOB_BRACE);
+
+foreach($helpers as $helper) {
+    require $helper;
+}
+
+// Redo
 define('BASE_URL', URL::base());
+
+/*
+ | Abstract base classes
+ */
 
 require(__SITE_PATH.'app/models/abstract/Controller.php');
 require(__SITE_PATH.'app/models/abstract/Model.php');
@@ -38,33 +62,4 @@ function __autoload($class_name) {
     include ($file);
 }
 
-// instanciating the registry
-// this will be the keeper of global variables.
-$registry = new Registry();
 
-// registering the config file
-if(file_exists(__SITE_PATH.'app/config/config.xml')) {
-    $registry->config = simplexml_load_file(__SITE_PATH.'app/config/config.xml');
-}
-
-require(__SITE_PATH.'app/helpers/Auth.php');
-require(__SITE_PATH.'app/helpers/Router.php');
-require(__SITE_PATH.'app/helpers/Config.php');
-require(__SITE_PATH.'app/helpers/Notifier.php');
-require(__SITE_PATH.'app/helpers/Hash.php');
-require(__SITE_PATH.'app/helpers/Validator.php');
-
-
-// instantiating the router.
-$registry->router = new Router($registry);
-
-// setting the right path to the controllers dir.
-$registry->router->setPath(__SITE_PATH . 'app/controllers');
-
-// running the loader
-$registry->router->loader();
-
-
-
-
-?>
