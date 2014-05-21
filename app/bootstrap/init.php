@@ -3,7 +3,7 @@
 // This is the initializer
 
 /*
- | Core
+ | App class
  */
 
 require(__SITE_PATH.'app/core/App.php');
@@ -12,24 +12,18 @@ require(__SITE_PATH.'app/core/App.php');
  | Libraries
  */
 
-$library_dir = __SITE_PATH.'app/libs/';
-
-$libraries = glob($library_dir.'*.php', GLOB_BRACE);
-
-foreach($libraries as $library) {
-    require $library;
+foreach (glob(__SITE_PATH.'app/core/libs/*.php') as $filename)
+{
+    require $filename;
 }
 
 /*
  | Helpers
  */
 
-$helpers_dir = __SITE_PATH.'app/helpers/';
-
-$helpers = glob($helpers_dir.'*.php', GLOB_BRACE);
-
-foreach($helpers as $helper) {
-    require $helper;
+foreach (glob(__SITE_PATH.'app/helpers/*.php') as $filename)
+{
+    require $filename;
 }
 
 // Redo
@@ -39,14 +33,10 @@ define('BASE_URL', URL::base());
  | Abstract base classes
  */
 
-require(__SITE_PATH.'app/models/abstract/Controller.php');
-require(__SITE_PATH.'app/models/abstract/Model.php');
-require(__SITE_PATH.'app/models/abstract/ViewModel.php');
-require(__SITE_PATH.'app/models/abstract/View.php');
-
-// starting the session
-
-Session::init();
+foreach (glob(__SITE_PATH.'app/core/base/*.php') as $filename)
+{
+    require $filename;
+}
 
 // autoload the model classes.
 
