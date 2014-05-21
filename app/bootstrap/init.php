@@ -21,7 +21,7 @@ foreach (glob(__SITE_PATH.'app/core/libs/*.php') as $filename)
  | Helpers
  */
 
-foreach (glob(__SITE_PATH.'app/helpers/*.php') as $filename)
+foreach (glob(__SITE_PATH.'app/core/helpers/*.php') as $filename)
 {
     require $filename;
 }
