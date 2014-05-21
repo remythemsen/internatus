@@ -1,7 +1,7 @@
 <?php 
 
 class AccountController extends Controller {
-    function index() {
+    function getIndex() {
 
         // check whether the account is logged in, and redirecting.
 
@@ -12,13 +12,13 @@ class AccountController extends Controller {
         }   
     }
 
-    function login() {
+    function getLogin() {
         $this->view->render('account/login');
     }
 
 
     // post login form 
-    function login_do() {
+    function postLogin() {
 
         $username = (isset($_POST['username']) ? trim($_POST['username']) : '');
         $password = (isset($_POST['password']) ? trim($_POST['password']) : '');
@@ -34,7 +34,7 @@ class AccountController extends Controller {
         }
     }
 
-    function create_do() {
+    function postCreate() {
         if(!Auth::check()) {
             // get + trim vars
             $username = (isset($_POST['username']) ? trim($_POST['username']) : false);
@@ -49,17 +49,18 @@ class AccountController extends Controller {
                 'email' => $email
             ))) {
 
-                $stmt = $this->db->prepare("INSERT INTO accounts (username, password, email, is_admin, is_active) VALUES (?, ?, ?, ?, ?)");
+                $db = new Database;
+
+                $stmt = $db->prepare("INSERT INTO accounts (username, password, email, is_admin, is_active) VALUES (?, ?, ?, ?, ?)");
                 $stmt->execute(array($username, Hash::make($password), $email, 0, 1));
                 Notifier::add('success', 'Congratulations, your account has been created, now login with your new credentials.');
-                URL::redirect('account/login');
             }
-        } else {
-            URL::redirect('home');
         }
+
+        URL::redirect('home');
     }
 
-    function logout() {
+    function getLogout() {
         Auth::logout();
     }
 

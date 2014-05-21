@@ -6,7 +6,7 @@
     <h5>Login to start using <?php echo Config::get()->general->pagetitle; ?></h5></span>
     <br />
     <h3>Login</h3>
-        <form action="<?php echo BASE_URL; ?>account/login_do" method="post">
+        <form action="<?php echo BASE_URL; ?>account/login" method="post">
             <ul>
                 <li class="field"><input class="medium input" placeholder="Username" type="text" name="username" /></li>
                 <li class="field"><input class="medium input"  placeholder="Password"  type="password" name="password" /></li>
@@ -19,7 +19,7 @@
 <br />
 
         <h3>Create Account</h3> 
-        <form id="create_user_form" action="<?php echo BASE_URL; ?>account/create_do" method="post">
+        <form id="create_user_form" action="<?php echo BASE_URL; ?>account/create" method="post">
             <ul>
                 <li class="field"><input class="medium input" placeholder="Username" type="text" name="username" /></li>
                 <li class="field"><input class="medium input" placeholder="Password" type="password" name="password" /></li>

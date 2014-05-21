@@ -1,6 +1,6 @@
 <?php
 class InstallController extends Controller {
-    function Index() {
+    function getIndex() {
 
         // recheck for config file, to limit access after install.
         if(file_exists(__SITE_PATH.'app/config/config.xml')) {

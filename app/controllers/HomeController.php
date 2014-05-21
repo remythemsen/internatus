@@ -1,7 +1,7 @@
 <?php
 
 class HomeController extends Controller {
-    function index() {
+    function getIndex() {
         if(Auth::check()) {
             // render the view
             $this->view->render('home/index');

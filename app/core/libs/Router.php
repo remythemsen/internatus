@@ -66,8 +66,12 @@ class Router {
             $this->controller = $parts[0];
             if(isset( $parts[1]))
             {
-                $this->action = $parts[1];
-                
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $this->action = 'post'.$parts[1];
+                } else {
+                    $this->action = 'get'.$parts[1];
+                }
+
                 // checking for parameter
                 if(isset( $parts[2])) {
                     $this->param = $parts[2];
@@ -83,7 +87,7 @@ class Router {
         // get action, or set index action as default.
         if (empty($this->action))
         {
-                $this->action = 'index';
+                $this->action = 'getIndex';
         }
 
         // finally, setting the filepath to the controller.
@@ -117,7 +121,7 @@ class Router {
         // (the index action is mandatory in controller classes).
         if (is_callable(array($controller, $this->action)) == false)
         {
-                $action = 'Index';
+                $action = 'getIndex';
         }
         else
         {

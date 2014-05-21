@@ -12,6 +12,6 @@ Abstract Class Controller {
     }
     
     // Force the index method for all controllers
-    abstract function index();
+    abstract function getIndex();
 
 }

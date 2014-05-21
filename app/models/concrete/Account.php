@@ -38,4 +38,3 @@ class Account extends Model {
         $this->can_book = $result['can_book'];
     }
 }
-?>
