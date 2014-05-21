@@ -4,8 +4,6 @@
 Abstract Class Controller {
 
     protected $registry;
-    protected $model;
-    protected $account;
 
     function __construct($registry) {
 
@@ -14,18 +12,12 @@ Abstract Class Controller {
 
         // creating a new view object
         $this->view = new View($this->registry);
-        
+
     }
     
     // Force the index method for all controllers
     abstract function index();
 
-
-
-
-
-    
-    
 }
 
 ?>
