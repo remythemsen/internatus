@@ -77,8 +77,6 @@ class InstallController extends Controller {
             // closing the file.
             fclose($handle);
 
-            // registering the new config file
-            $this->registry->config = simplexml_load_file($config_file);
 
             URL::redirect('install/administrator');
         } else {
@@ -173,7 +171,7 @@ class InstallController extends Controller {
     }
     
     function Settings() {
-        if(!isset($this->registry->config)) {
+        if(!Config::get()) {
             URL::redirect('install/database');
             Notifier::add('danger', 'No configuration file was found!, please enter the following information');
         } else {
@@ -195,11 +193,13 @@ class InstallController extends Controller {
 
         //checking for data from form
         if($page_title) {
+
+            $config = Config::get();
             // setting new value for page title and salt in config object.
-            $this->registry->config->general->pagetitle = $page_title;
-            $this->registry->config->general->salt = $salt;
+            $config->general->pagetitle = $page_title;
+            $config->general->salt = $salt;
             // storing full object in var as xml
-            $content = $this->registry->config->asXML();
+            $content = $config->asXML();
             // overwriting config file with new xml
             $config_file = __SITE_PATH.'app/config/config.xml';
             $handle = fopen($config_file, 'w') or die('Cannot open file:  '.$config_file);

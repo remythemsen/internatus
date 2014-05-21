@@ -3,15 +3,11 @@
 
 Abstract Class Controller {
 
-    protected $registry;
 
-    function __construct($registry) {
-
-        // storing the global registry.
-        $this->registry = $registry;
+    function __construct() {
 
         // creating a new view object
-        $this->view = new View($this->registry);
+        $this->view = new View();
 
     }
     

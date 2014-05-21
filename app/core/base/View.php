@@ -5,13 +5,11 @@ class View {
 
     // an array of javascript file names for the specific view.
     public $js = array();
-    protected $registry;
     protected $js_config;
     
-    function __construct($registry) {
+    function __construct() {
         // add view specific js files.
         $this->add_js();
-        $this->registry = $registry;
         $this->js_config = array('BASE_URL' => BASE_URL);
         
     }

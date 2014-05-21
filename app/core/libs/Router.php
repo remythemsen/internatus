@@ -1,8 +1,6 @@
 <?php
 class Router {
 
-    // the registry reference
-    private $registry;
 
     // the path to controllers.
     private $path;
@@ -19,9 +17,7 @@ class Router {
     // the passed parameter action/param
     public $param;
 
-    function __construct($registry) {
-        $this->registry = $registry;
-    }
+
     
     // Set the path to the controller directory.
     function setPath($path) {
@@ -113,8 +109,8 @@ class Router {
         // make a new instance of the controller.
         $class = $this->controller.'Controller';
 
-        // new controller, passing in the registry.
-        $controller = new $class($this->registry);
+        // new controller
+        $controller = new $class();
 
 
         // if no callable action, then call the default ('index').
