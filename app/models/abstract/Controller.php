@@ -34,16 +34,7 @@ Abstract Class Controller {
         // creating a new view object
         $this->view = new View($this->registry);
         
-        // getting the account id from session variable, if any.
-        $account_id = Session::get('account_id');
         
-        // instantiating a new account
-        if(isset($account_id)) {
-            // TODO: REDO THIS SHITE! :D
-            $this->account = new Account($this->registry);
-            $this->account->get_account_object($account_id);
-            $this->view->account = $this->account;
-        }
 
     }
     
