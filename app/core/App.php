@@ -4,6 +4,10 @@ class App {
 
     public function run() {
 
+        // starting the session
+
+        Session::init();
+
         // instanciating the registry
         // this will be the keeper of global variables.
         $registry = new Registry();
