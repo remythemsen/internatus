@@ -26,7 +26,7 @@ class Validator {
 
             // is available
             if($stmt->rowCount() != 0) {
-                Notifier::add('warning', 'This email address is already associated with an account');
+                array_push($errors, 'This email address is already associated with an account');
             }
         }
 
@@ -77,7 +77,9 @@ class Validator {
         if(count($errors) == 0) {
             return true;
         } else {
-            Notifier::add('warning', implode(', ', $errors));
+            foreach($errors as $error) {
+                Notifier::add('danger', $error);
+            }
         }
 
         $db = null;
