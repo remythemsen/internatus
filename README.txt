@@ -1,4 +1,4 @@
-Facebook-like wall for user to user chats (School Assignment)
+A Simple CMS made with the MVC architecture in mind
 
 Requirements:
 
@@ -13,7 +13,7 @@ Installation:
 
 1. cd /path/to/sites
 2. git clone (get url from github)
-3. cd thewall/
+3. cd internatus/
 4. composer install
 
 5. open build.properties, and change db settings to match your own.
