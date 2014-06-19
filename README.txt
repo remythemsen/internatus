@@ -1,4 +1,4 @@
-A Simple PHP Framework based MVC Architecture
+A Simple PHP Framework based on MVC Architecture
 
 Requirements:
 
