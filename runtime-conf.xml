@@ -9,11 +9,11 @@
     </log>
     -->
     <propel>
-        <datasources default="thewall">
-            <datasource id="thewall">
+        <datasources default="internatus">
+            <datasource id="internatus">
                 <adapter>mysql</adapter> <!-- sqlite, mysql, mssql, oracle, or pgsql -->
                 <connection>
-                    <dsn>mysql:host=localhost;dbname=thewall</dsn>
+                    <dsn>mysql:host=localhost;dbname=internatus</dsn>
                     <user>root</user>
                     <password>root</password>
                 </connection>
