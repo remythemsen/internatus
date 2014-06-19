@@ -1,7 +1,10 @@
-<?php
+<?php namespace TheWall\Core\Helpers;
 
 class URL {
     public static function base() {
+
+
+
         // Get base the URL
         if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
             $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -9,7 +12,10 @@ class URL {
             $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         }
 
+
+
         if(isset($_GET['url'])) {
+
             // exploding the get url
             $routeParts = explode('/', $_GET['url']);
             $urlParts = explode('/', $url);
@@ -18,16 +24,25 @@ class URL {
                 array_pop($urlParts);
             }
 
+
+
             // gathering the parts for the base URL
 
             $url = implode('/', $urlParts);
+
             // adding the ending slash
             $url = $url.'/';
 
-            return $url;
         }
+
+        return $url;
+
     }
     public static function redirect($url) {
-        header("Location:".BASE_URL.$url);
+        if((string)$url === 'referer') {
+            header("Location:".$_SERVER['HTTP_REFERER']);
+        } else {
+            header("Location:".BASE_URL.$url);
+        }
     }
 } 

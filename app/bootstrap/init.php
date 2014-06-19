@@ -26,7 +26,8 @@ foreach (glob(__SITE_PATH.'app/core/helpers/*.php') as $filename)
     require $filename;
 }
 
-// Redo
+// TODO: Find a new place for this definition
+use TheWall\Core\Helpers\URL;
 define('BASE_URL', URL::base());
 
 /*
@@ -38,18 +39,12 @@ foreach (glob(__SITE_PATH.'app/core/base/*.php') as $filename)
     require $filename;
 }
 
-// autoload the model classes.
+// Include the main Propel script
+require_once __SITE_PATH.'vendor/propel/propel1/runtime/lib/Propel.php';
 
-function __autoload($class_name) {
+// Initialize Propel with the runtime configuration
+Propel::init(__SITE_PATH."build/conf/thewall-conf.php");
 
-    $filename = $class_name . '.php';
-    $file = __SITE_PATH . 'app/models/concrete/' . $filename;
-
-    if (file_exists($file) == false) {
-        return false;
-    }
-    // else include file.
-    include ($file);
-}
-
+// Add the generated 'classes' directory to the include path
+set_include_path(__SITE_PATH."build/classes" . PATH_SEPARATOR . get_include_path());
 

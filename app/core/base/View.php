@@ -1,25 +1,35 @@
 <?php
-// this is the base view class
+
+use TheWall\Core\Helpers\Config;
+use TheWall\Core\Helpers;
 
 class View {
 
+
     // an array of javascript file names for the specific view.
     public $js = array();
+    public $pagetitle;
     protected $js_config;
     
     function __construct() {
+
         // add view specific js files.
         $this->add_js();
-        $this->js_config = array('BASE_URL' => BASE_URL);
+        $this->js_config = array('BASE_URL' => BASE_URL, 'csrftoken' => Helpers\Session::get('csrftoken'));
+        $this->pagetitle = Config::get()->general->pagetitle;
         
     }
     public function render($name, $template = true) {
-        if($template == false) {
+
+        if($template === false) {
             require __SITE_PATH.'app/views/' . $name . '.php';
         } else {
+
             require __SITE_PATH.'app/views/header.php';
             require __SITE_PATH.'app/views/' . $name . '.php';
             require __SITE_PATH.'app/views/footer.php';
+
+
         }
     }
 
@@ -46,7 +56,7 @@ class View {
             foreach($files as $file) {
                 $file_parts = pathinfo($file);
                 $file_extension = $file_parts['extension'];
-                if($file_extension == 'js') {
+                if((string)$file_extension === 'js') {
                     array_push($this->js, BASE_URL.'js/views/'.$url[0].'/'.$file);
                 }
             }

@@ -1,10 +1,8 @@
     </div> <!-- end of content -->
     <div id="footer">
-        <div class="row">
-        <p>This website is the product of a Webdevelopment assignment for Copenhagen School of Design & Technology.</p>
-        </div>
+
     </div>
-    
+
     <?php if(isset($this->js_config)) : ?>
         <!-- getting js config array -->
         <script>var config = <?php echo json_encode($this->js_config); ?>;</script>
@@ -28,7 +26,6 @@
     }
     }
     </script>
-    <script src="<?php echo BASE_URL; ?>js/libs/jquery-ui-1.10.4.custom.min.js"></script>
 
     <!-- general application wide scripts -->
     <script src="<?php echo BASE_URL; ?>js/general.js"></script>

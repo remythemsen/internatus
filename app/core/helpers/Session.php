@@ -1,4 +1,5 @@
-<?php
+<?php namespace TheWall\Core\Helpers;
+
 class Session {
 
     public static function init() {
@@ -19,5 +20,7 @@ class Session {
             return $_SESSION[$key];
         }
     }
+    public static function regenerate() {
+        session_regenerate_id(TRUE);
+    }
 }
-?>

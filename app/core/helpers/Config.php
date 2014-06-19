@@ -1,4 +1,4 @@
-<?php
+<?php namespace TheWall\Core\Helpers;
 
 class Config {
     public static function get() {

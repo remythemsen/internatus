@@ -1,6 +1,6 @@
-<?php
-class Router {
+<?php namespace TheWall\Core\Libs;
 
+class Router {
 
     // the path to controllers.
     private $path;
@@ -17,14 +17,12 @@ class Router {
     // the passed parameter action/param
     public $param;
 
-
-    
     // Set the path to the controller directory.
     function setPath($path) {
 
         // does the path direct to a valid dir?
-        if(is_dir($path) == false) {
-            throw new Exception ('The controllers path: ('.$path.') was not found, or is not accessible');
+        if((bool)is_dir($path) === false) {
+            throw new \Exception ('The controllers path: ('.$path.') was not found, or is not accessible');
         }
 
         // setting the path in the object.
@@ -34,26 +32,9 @@ class Router {
     // Get the controller file from the url.
     private function getController() {
 
-                
+
         $route = (empty($_GET['url'])) ? '' : $_GET['url'];
 
-        // checking for config file.
-        if(!file_exists(__SITE_PATH."app/config/config.xml")) {
-
-            // checks for logged in account, and kills it
-            if(isset($_SESSION['account_id'])) {
-                Session::destroy();
-            }
-
-            // setting header to install route
-            
-            $installRouteParts = explode('/', $route);
-            
-            if($installRouteParts[0] != 'install') {
-                header("Location: ".BASE_URL."install");
-            }
-        }
-        
         //setting default controller name if none was specified.
         if (empty($route))
         {
@@ -66,7 +47,7 @@ class Router {
             $this->controller = $parts[0];
             if(isset( $parts[1]))
             {
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if ((string)$_SERVER['REQUEST_METHOD'] === 'POST') {
                     $this->action = 'post'.$parts[1];
                 } else {
                     $this->action = 'get'.$parts[1];
@@ -96,13 +77,13 @@ class Router {
 
     public function loader() {
         
-        
+
         // getting the controller
         $this->getController();
 
         // if the file is not ok, die, and throw error.
         // TODO: handle with error controller.
-        if (is_readable($this->file) == false)
+        if ((bool)is_readable($this->file) === false)
         {
             header("Location: ".BASE_URL."error/not_found");
         }
@@ -116,10 +97,9 @@ class Router {
         // new controller
         $controller = new $class();
 
-
         // if no callable action, then call the default ('index').
         // (the index action is mandatory in controller classes).
-        if (is_callable(array($controller, $this->action)) == false)
+        if ((bool)is_callable(array($controller, $this->action)) === false)
         {
                 $action = 'getIndex';
         }

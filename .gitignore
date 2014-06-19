@@ -1,2 +1,6 @@
-config.xml
-.sass-cache
+.idea
+.DS_Store
+vendor/
+.sass-cache/
+build/
+logs/*
