@@ -4,7 +4,7 @@ use TheWall\Core;
 
 
 // hide system errors
-error_reporting(null);
+error_reporting(E_ALL);
 
 /* This is the entry point of the web application */
 
