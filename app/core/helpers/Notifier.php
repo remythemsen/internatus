@@ -13,7 +13,7 @@ class Notifier {
     public static function printAll() {
         if(isset($_SESSION['notifications']) && !empty($_SESSION['notifications']) && is_array($_SESSION['notifications'])) {
             foreach($_SESSION['notifications'] as $notification) {
-                echo '<div class="alert '.$notification['type'].'">'.$notification['message'].'<i class="icon-cancel-circled remove-notification" style="float:right;"></i></div>';
+                echo $notification['type'].': '.$notification['message'];
             }
             // unsetting the global variable.
             unset($_SESSION['notifications']);

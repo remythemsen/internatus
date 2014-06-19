@@ -3,6 +3,11 @@
 use TheWall\Core\Helpers;
 
 class UserController extends Controller {
+    function getLogin() {
+        if(!Helpers\Auth::check()) {
+            $this->view->render('user/login');
+        }
+    }
 
     function postLogin() {
 
@@ -51,6 +56,11 @@ class UserController extends Controller {
 
         } else {
             Helpers\URL::redirect('error');
+        }
+    }
+    function getCreate() {
+        if(!Helpers\Auth::check()) {
+            $this->view->render('user/create');
         }
     }
     function postCreate() {

@@ -15,10 +15,20 @@ class Auth {
         }
     }
 
-    public static function check() {
+    public static function check($redirect = false) {
         if(Session::get('user_id') != null) {
             return true;
         }
+
+        // redirecting if specified.
+        if((bool)$redirect === true) {
+            if((string)$redirect !== '') {
+                URL::redirect($redirect);
+            } else {
+                URL::redirect('error');
+            }
+        }
+
     }
 
     public static function logout() {
@@ -50,9 +60,11 @@ class Auth {
         return $user;
     }
 
-    public static function isAdmin() {
-        if((string)\UserQuery::create()->findPk(Session::get('user_id'))->getRole() === 'administrator') {
-            return true;
+    public static function isAdmin($redirect = false) {
+        if(Auth::check($redirect)) {
+            if((string)\UserQuery::create()->findPk(Session::get('user_id'))->getRole() === 'administrator') {
+                return true;
+            }
         }
     }
 
