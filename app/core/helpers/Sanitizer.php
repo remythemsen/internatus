@@ -3,7 +3,7 @@
 namespace TheWall\Core\Helpers;
 
 
-class Sanitizor {
+class Sanitizer {
     public static function escapeHTML($input) {
         return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     }
