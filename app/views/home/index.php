@@ -1,4 +1,4 @@
 <?php use TheWall\Core\Helpers; ?>
-<div class="row">
+<div>
     <p>This is the Home View</p>
 </div>
