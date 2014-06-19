@@ -1,4 +1,4 @@
-A Simple CMS made with the MVC architecture in mind
+A Simple PHP Framework based MVC Architecture
 
 Requirements:
 
