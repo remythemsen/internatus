@@ -1,5 +1,7 @@
 <?php namespace Internatus\Core\Libs;
 
+use Internatus\Controllers;
+
 class Router {
 
     // the path to controllers.
@@ -92,7 +94,9 @@ class Router {
         include $this->file;
 
         // make a new instance of the controller.
-        $class = $this->controller.'Controller';
+
+        //TODO: Remove the Internatus namespace part.
+        $class = 'Internatus\\Controllers\\' . $this->controller.'Controller';
 
         // new controller
         $controller = new $class();
