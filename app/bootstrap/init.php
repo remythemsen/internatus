@@ -27,7 +27,7 @@ foreach (glob(__SITE_PATH.'app/core/helpers/*.php') as $filename)
 }
 
 // TODO: Find a new place for this definition
-use TheWall\Core\Helpers\URL;
+use Internatus\Core\Helpers\URL;
 define('BASE_URL', URL::base());
 
 /*

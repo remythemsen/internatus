@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="internatus" defaultIdMethod="native">
+<database name="internatus" defaultIdMethod="native" namespace="Internatus\Domain">
 
-    <table name="users" phpName="User">
+    <table name="users" phpName="User" namespace="User">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="username" type="varchar" size="255" required="true" />
         <column name="email" type="varchar" size="255" required="true" />
@@ -9,7 +9,7 @@
         <column name="role" type="enum" valueSet="default, administrator" />
     </table>
 
-    <table name="persisted_sessions" phpName="PersistedSession">
+    <table name="persisted_sessions" phpName="PersistedSession" namespace="PersistedSession">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="user_id" type="integer" required="true" />
         <column name="token" type="varchar" size="255" required="true" />

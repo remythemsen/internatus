@@ -1,5 +1,5 @@
 <?php
-namespace TheWall\Core\Helpers;
+namespace Internatus\Core\Helpers;
 
 class Observer {
     public static function log($fileName, $args = array(), $ip = true) {

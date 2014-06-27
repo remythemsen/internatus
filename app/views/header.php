@@ -1,5 +1,5 @@
 <?php
-use TheWall\Core\Helpers\Notifier;
+use Internatus\Core\Helpers\Notifier;
 
 require_once(__SITE_PATH.'app/views/head.php');
 ?>

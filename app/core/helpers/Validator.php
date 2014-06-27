@@ -1,6 +1,6 @@
-<?php namespace TheWall\Core\Helpers;
+<?php namespace Internatus\Core\Helpers;
 
-use UserQuery;
+use Internatus\Domain\User;
 
 class Validator {
     public static function check($array) {
@@ -28,7 +28,7 @@ class Validator {
                 array_push($errors, 'That is not a Valid email address!');
             }
 
-            $result = UserQuery::create()->findOneByEmail($array['email']);
+            $result = User\UserQuery::create()->findOneByEmail($array['email']);
 
             // is available
             if($result) {
@@ -88,7 +88,7 @@ class Validator {
                 array_push($errors, 'usernames must not include special characters');
             }
 
-            $result = UserQuery::create()->findOneByUsername($array['username']);
+            $result = User\UserQuery::create()->findOneByUsername($array['username']);
 
             // is available
             if($result) {

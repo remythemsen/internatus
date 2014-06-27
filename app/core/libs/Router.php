@@ -1,4 +1,4 @@
-<?php namespace TheWall\Core\Libs;
+<?php namespace Internatus\Core\Libs;
 
 class Router {
 

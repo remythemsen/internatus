@@ -1,7 +1,8 @@
-<?php namespace TheWall\Core;
+<?php namespace Internatus\Core;
 
-use TheWall\Core\Helpers;
-use TheWall\Core\Libs;
+use Internatus\Core\Helpers;
+use Internatus\Core\Libs;
+use Internatus\Domain\PersistedSession;
 
 class App {
 
@@ -45,8 +46,8 @@ class App {
                 return false;
             }
 
-            if(\PersistedSessionQuery::create()->findOneByUserId($user_id)) {
-                $usertoken = \PersistedSessionQuery::create()->findOneByUserId($user_id)->getToken();
+            if(PersistedSession\PersistedSessionQuery::create()->findOneByUserId($user_id)) {
+                $usertoken = PersistedSession\PersistedSessionQuery::create()->findOneByUserId($user_id)->getToken();
             } else {
                 // Checking for SSL connection
                 $ssl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? true : NULL);

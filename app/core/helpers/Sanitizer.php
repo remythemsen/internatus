@@ -1,6 +1,6 @@
 <?php
 
-namespace TheWall\Core\Helpers;
+namespace Internatus\Core\Helpers;
 
 
 class Sanitizer {

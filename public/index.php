@@ -1,7 +1,6 @@
 <?php
 
-use TheWall\Core;
-
+use Internatus\Core;
 
 // hide system errors
 error_reporting(E_ALL);

@@ -1,12 +1,12 @@
-<?php
+<?php namespace Internatus\Controllers;
 
-use TheWall\Core\Helpers;
+use Internatus\Core\Helpers;
+use Internatus\Core\Base;
 
-class HomeController extends Controller {
+class HomeController extends Base\Controller {
     function getIndex() {
         // Render the view.
         $this->view->render('home/index');
 
     }
-
 }

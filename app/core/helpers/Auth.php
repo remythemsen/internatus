@@ -1,10 +1,13 @@
-<?php namespace TheWall\Core\Helpers;
+<?php namespace Internatus\Core\Helpers;
+
+use Internatus\Domain\User;
+use Internatus\Domain\PersistedSession;
 
 class Auth {
 
     public static function attempt($email, $password, $persist) {
 
-        $user = \UserQuery::create()
+        $user = User\UserQuery::create()
             ->filterByEmail($email)
             ->findOne();
         if($user) {
@@ -46,7 +49,7 @@ class Auth {
             // check for existing row in database
 
             // Remove DB token entry
-            \PersistedSessionQuery::create()->findOneByUserId(Session::get('user_id'))->delete();
+            PersistedSession\PersistedSessionQuery::create()->findOneByUserId(Session::get('user_id'))->delete();
         }
 
         // Reset session data, and destroy.
@@ -56,13 +59,13 @@ class Auth {
     }
 
     public static function user() {
-        $user = \UserQuery::create()->findPk(Session::get('user_id'));
+        $user = User\UserQuery::create()->findPk(Session::get('user_id'));
         return $user;
     }
 
     public static function isAdmin($redirect = false) {
         if(Auth::check($redirect)) {
-            if((string)\UserQuery::create()->findPk(Session::get('user_id'))->getRole() === 'administrator') {
+            if((string)User\UserQuery::create()->findPk(Session::get('user_id'))->getRole() === 'administrator') {
                 return true;
             }
         }
@@ -88,13 +91,13 @@ class Auth {
 
             // insert token into, or update PersistedSessions table along with userid
 
-            $persistedSession = \PersistedSessionQuery::create()->findOneByUserId((int)$user_id);
+            $persistedSession = PersistedSession\PersistedSessionQuery::create()->findOneByUserId((int)$user_id);
 
             if(count($persistedSession) > 0) {
                 $persistedSession->setToken($token);
                 $persistedSession->save();
             } else {
-                $persistedSession = new \PersistedSession();
+                $persistedSession = new PersistedSession\PersistedSession();
                 $persistedSession->setUserId($user_id);
                 $persistedSession->setToken($token);
                 $persistedSession->save();

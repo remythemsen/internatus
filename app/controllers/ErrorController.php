@@ -1,7 +1,8 @@
-<?php
+<?php namespace Internatus\Controllers;
 
+use Internatus\Core\Base;
 
-class ErrorController extends Controller {
+class ErrorController extends Base\Controller {
 
     public function getIndex() {
 

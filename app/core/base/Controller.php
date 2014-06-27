@@ -1,6 +1,6 @@
-<?php
+<?php namespace Internatus\Core\Base;
 // This is the base controller class!
-use TheWall\Core\Helpers\URL;
+use Internatus\Core\Helpers\URL;
 
 Abstract Class Controller {
 

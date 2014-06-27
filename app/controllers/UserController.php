@@ -1,8 +1,10 @@
-<?php
+<?php namespace Internatus\Controllers;
 
-use TheWall\Core\Helpers;
+use Internatus\Core\Helpers;
+use Internatus\Core\Base;
+use Internatus\Domain\User;
 
-class UserController extends Controller {
+class UserController extends Base\Controller {
     function getLogin() {
         if(!Helpers\Auth::check()) {
             $this->view->render('user/login');
@@ -37,7 +39,7 @@ class UserController extends Controller {
 
         if(Helpers\Auth::isAdmin() && Helpers\Session::get('csrftoken') === $_POST['csrftoken']) {
 
-            $user = UserQuery::create()->findOneById($id);
+            $user = User\UserQuery::create()->findOneById($id);
 
             $user->delete();
 
@@ -78,7 +80,7 @@ class UserController extends Controller {
             'username' => $username
         ))) {
 
-            $user = new User();
+            $user = new User\User();
             $user->setUsername($username);
             $user->setEmail($email);
             $user->setPassword(Helpers\Hash::make($password));
@@ -107,7 +109,7 @@ class UserController extends Controller {
     }
     function getUsers() {
         if(Helpers\Auth::check() && Helpers\Auth::isAdmin()) {
-            $this->view->users = UserQuery::create()->find();
+            $this->view->users = User\UserQuery::create()->find();
             $this->view->render('user/users');
         } else {
             Helpers\URL::redirect('error');
@@ -115,7 +117,7 @@ class UserController extends Controller {
     }
     function getSettings() {
         if(Helpers\Auth::check()) {
-            $this->view->user = UserQuery::create()->findOneById(Helpers\Session::get('user_id'));
+            $this->view->user = User\UserQuery::create()->findOneById(Helpers\Session::get('user_id'));
             $this->view->render('user/settings');
         } else {
             Helpers\URL::redirect('error');
@@ -129,7 +131,7 @@ class UserController extends Controller {
 
             $username = (isset($_POST['username']) ? trim(Helpers\Sanitizer::escapeHTML($_POST['username'])) : false);
             $email = (isset($_POST['email']) ? trim(Helpers\Sanitizer::escapeHTML($_POST['email'])) : false);
-            $user = UserQuery::create()->findOneById(Helpers\Session::get('user_id'));
+            $user = User\UserQuery::create()->findOneById(Helpers\Session::get('user_id'));
 
 
             // if password isset!

@@ -1,4 +1,4 @@
-<?php namespace TheWall\Core\Helpers;
+<?php namespace Internatus\Core\Helpers;
 
 class URL {
     public static function base() {

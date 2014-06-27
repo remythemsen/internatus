@@ -1,7 +1,7 @@
-<?php
+<?php namespace Internatus\Core\Base;
 
-use TheWall\Core\Helpers\Config;
-use TheWall\Core\Helpers;
+use Internatus\Core\Helpers\Config;
+use Internatus\Core\Helpers;
 
 class View {
 
